@@ -13,11 +13,6 @@ const RING = [
     feed: "https://maxbo.me/atom.xml",
   },
   {
-    url: "https://liamzebedee.com",
-    name: "Liam Zebedee",
-    feed: "https://liamzebedee.com/index.xml",
-  },
-  {
     url: "https://borretti.me/about",
     name: "Fernando Borretti",
     feed: "https://borretti.me/feed.xml",
@@ -26,11 +21,6 @@ const RING = [
     url: "https://ethansmith2000.com",
     name: "Ethan Smith",
     feed: "https://www.ethansmith2000.com/blog-feed.xml",
-  },
-  {
-    url: "https://samisgrove.com",
-    name: "Sam Isgrove",
-    feed: "https://samisgrove.com/feed.xml",
   },
   {
     url: "https://home.rayzhu.me",

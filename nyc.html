@@ -4,14 +4,14 @@
   <title>Matcha Monday NYC</title>
   <meta property="og:title" content="Matcha Monday NYC">
   <meta property="og:description"
-    content="A casual community of matcha lovers, founders, builders, and artists. Every Monday at 8am.">
+    content="A casual community of matcha lovers, founders, builders, and artists. One time only: Monday 26 October, 8:30am at Sorate.">
   <meta property="og:image" content="matcha.webp">
   <meta property="og:url" content="">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Matcha Monday NYC">
   <meta name="twitter:description"
-    content="A casual community of matcha lovers, founders, builders, and artists. Every Monday at 8am.">
+    content="A casual community of matcha lovers, founders, builders, and artists. One time only: Monday 26 October, 8:30am at Sorate.">
   <meta name="twitter:image" content="matcha.webp">
   <link rel="icon" type="image/gif" href="matcha.gif">
 
@@ -30,7 +30,33 @@
         </div>
       </header>
       <h1>🍵 <i>Matcha Monday NYC</i> 🍵</h1>
-      <p>Coming soon</p>
+      <center>
+        <div class="sign">
+          One time only! <br />
+          Monday 26 October @ 8:30am <br />
+        </div>
+      </center>
+
+      <section class="bottom-wave">
+        <h2 id="details">Details</h2>
+        <p>
+          <strong>When:</strong> Monday 26 October, 8:30am<br />
+          <strong>Where:</strong> Sorate, <a id="map-link" href="https://maps.google.com/?q=Sorate,+103+Sullivan+St,+New+York,+NY+10012" target="_blank">103 Sullivan St, New York, NY 10012</a><br />
+          <strong>Contact:</strong> DM <a href="https://x.com/_max_bo_">@_max_bo_</a> on Twitter
+        </p>
+        <iframe
+          title="Map of Sorate, 103 Sullivan St, New York, NY 10012"
+          src="https://maps.google.com/maps?q=Sorate,+103+Sullivan+St,+New+York,+NY+10012&output=embed"
+          width="100%" height="350" style="border: 1px solid #2f4f2f;" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </section>
+
+      <script>
+        // Apple Maps has no keyless iframe embed, so on Apple devices open the address in Apple Maps instead
+        if (/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)) {
+          document.getElementById('map-link').href = 'https://maps.apple.com/?q=Sorate&address=103+Sullivan+St,+New+York,+NY+10012';
+        }
+      </script>
 </body>
 
 </html>

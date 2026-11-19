@@ -59,6 +59,17 @@ body {
   padding: 1vw;
 }
 
+/* Same gap under the header on every page, tighter on mobile. */
+.leaves > header + * {
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .leaves > header + * {
+    margin-top: 12px;
+  }
+}
+
 h1 {
   text-align: center;
   font-size: 2.5em;
@@ -96,6 +107,11 @@ a {
 footer {
   font-size: 0.8em;
   margin-top: 10ch;
+}
+
+.source-link svg {
+  vertical-align: -2px;
+  margin-right: 0.5ch;
 }
 
 footer img {
@@ -149,7 +165,7 @@ footer img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin: 2em 0;
+  margin-bottom: 2em;
 }
 
 .city-panel {

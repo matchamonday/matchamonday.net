@@ -59,6 +59,17 @@ body {
   padding: 1vw;
 }
 
+/* Same gap under the header on every page, tighter on mobile. */
+.leaves > header + * {
+  margin-top: 24px;
+}
+
+@media (max-width: 640px) {
+  .leaves > header + * {
+    margin-top: 12px;
+  }
+}
+
 h1 {
   text-align: center;
   font-size: 2.5em;
@@ -96,6 +107,11 @@ a {
 footer {
   font-size: 0.8em;
   margin-top: 10ch;
+}
+
+.source-link svg {
+  vertical-align: -2px;
+  margin-right: 0.5ch;
 }
 
 footer img {
@@ -141,4 +157,91 @@ footer img {
   border-style: solid;
   padding: 1ch;
   display: inline-block;
+}
+
+/* City chapter panels: a tiny 8-colour landmark photo scaled up with hard
+   edges (old video game style), then a city colour washed over it. */
+.city-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 2em;
+}
+
+.city-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 360px;
+  padding: 1.25em 1em;
+  overflow: hidden;
+  border: 2px solid var(--chip-text, #2f4f2f);
+  color: #fff;
+  text-decoration: none;
+  background: var(--photo) center / cover no-repeat;
+  image-rendering: pixelated;
+}
+
+.city-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--tint);
+  mix-blend-mode: color;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.city-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 35, 20, 0.75), transparent 60%);
+}
+
+.city-panel:hover::before,
+.city-panel:focus-visible::before {
+  opacity: 0.35;
+}
+
+.city-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.city-tag,
+.city-when {
+  font-family: 'unifont', monospace;
+}
+
+.city-tag {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  background: var(--chip, #d9e5c9);
+  color: var(--chip-text, #2f4f2f);
+  border: 2px solid var(--chip-text, #2f4f2f);
+  padding: 0 0.5ch;
+}
+
+.city-name {
+  font-size: 2em;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 0.25em;
+}
+
+.city-syd { --photo: url("img/syd-pixel.png"); --tint: #7fb24a; background-position: 40% center; }
+.city-nyc { --photo: url("img/nyc-pixel.png"); --tint: #e0a23b; --chip: #f3dfb8; --chip-text: #5a3d0e; }
+.city-sf  { --photo: url("img/sf-pixel.png");  --tint: #e0708a; --chip: #f6d3dc; --chip-text: #6b2235; background-position: 25% center; }
+
+@media (max-width: 640px) {
+  .city-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .city-panel {
+    min-height: 180px;
+  }
 }

@@ -56,7 +56,7 @@
       </nav>
 
       <section class="bottom-wave">
-        <h2 id="welcome">Welcome</h2>
+        <h2 id="welcome"><a class="anchor" href="#welcome">#</a> Welcome</h2>
         <p>We are a casual community of matcha lovers, founders, builders, and artists. We meet on Monday
           mornings in each of our chapters above. Bring ideas, a project, or just yourself
           <img src="matcha.gif" alt="matcha emote">.
@@ -64,7 +64,7 @@
       </section>
 
       <section class="bottom-wave">
-        <h2 id="feed">Matcha feed</h2>
+        <h2 id="feed"><a class="anchor" href="#feed">#</a> Feed</h2>
         <p>Share your matcha from any chapter. To avoid doxxing, please keep people's faces out of your photos.</p>
         <form id="feed-form" class="feed-form">
           <input type="text" name="name" placeholder="Your name" maxlength="40" required>
@@ -88,7 +88,7 @@
         // API Preview after the same branch slug (lowercased, every run of other characters turned into `-`).
         const previewBranch = location.hostname.match(/^([a-z0-9-]+)\.matchamonday-net\.pages\.dev$/)?.[1];
         const FEED_API = previewBranch
-          ? `https://${previewBranch}-matchamonday-feed.samis.workers.dev`
+          ? `https://${previewBranch}-matchamonday-api.samis.workers.dev`
           : 'https://api.matchamonday.net';
 
         const form = document.getElementById('feed-form');
@@ -182,7 +182,7 @@
       </script>
 
       <section class="bottom-wave">
-        <h2 id="member-achievements">Member achievements</h2>
+        <h2 id="achievements"><a class="anchor" href="#achievements">#</a> Member achievements</h2>
         <div class="achievements-grid" id="achievements-grid">
           <div class="achievement-item">
             <a href="https://maxbo.me/is-in-the-internet-phone-book.html" target="_blank">
@@ -206,7 +206,7 @@
       </section>
 
       <section class="bottom-wave">
-        <h2 id="webring">Webring</h2>
+        <h2 id="webring"><a class="anchor" href="#webring">#</a> Webring</h2>
         <p>
           Some of our community members have an online presence:
         </p>
@@ -248,12 +248,12 @@ https://cdn.jsdelivr.net/gh/matchamonday/matchamonday.net
       </section>
 
       <section class="bottom-wave">
-        <h2 id="goal">Goal</h2>
+        <h2 id="goal"><a class="anchor" href="#goal">#</a> Goal</h2>
         <p>We want to establish Matcha Mondays in all major cities in the world.</p>
       </section>
 
       <section class="bottom-wave">
-        <h2 id="join-us">Join us</h2>
+        <h2 id="join-us"><a class="anchor" href="#join-us">#</a> Join us</h2>
         <p>Join the <a href="https://x.com/i/communities/1839128523392561663">matcha monday community on X</a>,
         and see your city's page for where we meet.</p>
       </section>

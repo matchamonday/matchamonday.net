@@ -1,11 +1,11 @@
 {
-  "name": "matchamonday-feed",
+  "name": "matchamonday-api",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler d1 migrations apply matchamonday-feed --remote && wrangler deploy",
-    "preview": "wrangler d1 migrations apply DB --remote --preview && wrangler preview"
+    "deploy": "wrangler d1 migrations apply matchamonday-api --remote && wrangler deploy",
+    "preview": "wrangler d1 migrations apply DB --remote --env preview-migrations && wrangler preview --ignore-base-config"
   },
   "devDependencies": {
     "wrangler": "^4.165.0"

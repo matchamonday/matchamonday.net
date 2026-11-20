@@ -370,3 +370,18 @@ footer img {
     min-height: 180px;
   }
 }
+
+h2 .anchor {
+  text-decoration: none;
+  font-style: normal;
+  opacity: 0.4;
+}
+
+h2 .anchor:hover,
+h2 .anchor:focus-visible {
+  opacity: 1;
+}
+
+h2[id] {
+  scroll-margin-top: 16px;
+}

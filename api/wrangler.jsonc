@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "matchamonday-api",
+  "main": "src/index.js",
+  "account_id": "0c102d6dc15128b536cff02bb7072b93",
+  "compatibility_date": "2026-11-01",
+  "routes": [{ "pattern": "api.matchamonday.net", "custom_domain": true }],
+  "preview_urls": true,
+  "ai": { "binding": "AI" },
+  "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "matchamonday-api" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "matchamonday-api", "database_id": "fe6d7a37-acea-4038-9739-a9a3a6b275a4", "migrations_dir": "migrations" }],
+  "ratelimits": [{ "name": "UPLOADS", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } }],
+  "previews": {
+    "ai": { "binding": "AI" },
+    "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "matchamonday-api-preview" }],
+    "d1_databases": [{ "binding": "DB", "database_name": "matchamonday-api-preview", "database_id": "d8c12d0b-9791-4fc8-8ca8-ffbcffa997ea", "migrations_dir": "migrations" }],
+    "ratelimits": [{ "name": "UPLOADS", "namespace_id": "1002", "simple": { "limit": 5, "period": 60 } }]
+  },
+  "env": {
+    "preview-migrations": {
+      "d1_databases": [{ "binding": "DB", "database_name": "matchamonday-api-preview", "database_id": "d8c12d0b-9791-4fc8-8ca8-ffbcffa997ea", "migrations_dir": "migrations" }]
+    }
+  }
+}

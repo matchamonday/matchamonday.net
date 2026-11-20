@@ -84,7 +84,9 @@
       </section>
 
       <script type="module">
-        const FEED_API = 'https://api.matchamonday.net';
+        const FEED_API = location.hostname.endsWith('.pages.dev')
+          ? 'https://api-preview.matchamonday.net'
+          : 'https://api.matchamonday.net';
 
         const form = document.getElementById('feed-form');
         const message = document.getElementById('feed-message');

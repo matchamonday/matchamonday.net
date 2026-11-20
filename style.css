@@ -59,6 +59,33 @@ body {
   padding: 1vw;
 }
 
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.home-link {
+  font-size: 1.75em;
+  line-height: 1;
+  color: #2f4f2f;
+  text-decoration: none;
+  padding: 0 4px;
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+  text-decoration: underline;
+}
+
+.city-marks {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
 /* Same gap under the header on every page, tighter on mobile. */
 .leaves > header + * {
   margin-top: 24px;
@@ -308,7 +335,8 @@ footer img {
   image-rendering: pixelated;
 }
 
-.city-panel::before {
+.city-panel::before,
+.city-mark::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -326,7 +354,9 @@ footer img {
 }
 
 .city-panel:hover::before,
-.city-panel:focus-visible::before {
+.city-panel:focus-visible::before,
+.city-mark:hover::before,
+.city-mark:focus-visible::before {
   opacity: 0.35;
 }
 
@@ -355,6 +385,35 @@ footer img {
   font-style: italic;
   line-height: 1;
   margin-bottom: 0.25em;
+}
+
+.city-mark {
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex: none;
+  border: 2px solid var(--chip-text, #2f4f2f);
+  text-decoration: none;
+  background: var(--photo) center / cover no-repeat;
+  image-rendering: pixelated;
+}
+
+.city-mark > .city-tag {
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  font-size: 0.7em;
+  line-height: 1.4;
+  color: var(--chip-text, #2f4f2f);
+  white-space: nowrap;
+}
+
+.city-mark:focus-visible {
+  outline: 2px dashed var(--chip-text, #2f4f2f);
+  outline-offset: 2px;
 }
 
 .city-syd { --photo: url("img/syd-pixel.png"); --tint: #7fb24a; background-position: 40% center; }

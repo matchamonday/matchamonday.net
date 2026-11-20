@@ -1,0 +1,12 @@
+{
+  "name": "matchamonday-feed",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler d1 migrations apply matchamonday-feed --remote && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.165.0"
+  }
+}

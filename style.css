@@ -135,6 +135,131 @@ footer img {
   border: 1px solid #2f4f2f;
 }
 
+.feed-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.feed-grid + button {
+  margin-top: 16px;
+}
+
+.feed-form input:not([type="file"]),
+.feed-form select,
+.feed-form button,
+.feed-form input::file-selector-button,
+.feed-grid + button {
+  appearance: none;
+  font-family: 'unifont', monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2f4f2f;
+  background-color: #f1f6e9;
+  border: 2px solid #2f4f2f;
+  border-radius: 0;
+  padding: 4px 10px;
+}
+
+.feed-form input[type="file"] {
+  font-family: 'unifont', monospace;
+  font-size: 1rem;
+}
+
+.feed-form input::placeholder {
+  color: #6b806b;
+}
+
+.feed-form select {
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' shape-rendering='crispEdges'%3E%3Cpath fill='%232f4f2f' d='M0 0h10v2H8v2H6v2H4V4H2V2H0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+}
+
+.feed-form button,
+.feed-form input::file-selector-button,
+.feed-grid + button {
+  box-shadow: 2px 2px 0 #2f4f2f;
+  cursor: pointer;
+}
+
+.feed-form input::file-selector-button {
+  margin-right: 8px;
+}
+
+.feed-form button {
+  color: #f1f6e9;
+  background-color: #2f4f2f;
+}
+
+.feed-form button:hover {
+  background-color: #3f6b3f;
+}
+
+.feed-form input::file-selector-button:hover,
+.feed-grid + button:hover {
+  background-color: #c5d9ad;
+}
+
+.feed-form button:active,
+.feed-form input::file-selector-button:active,
+.feed-grid + button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
+
+.feed-form button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+@media (max-width: 640px) {
+  .feed-form input:not([type="file"]),
+  .feed-form select {
+    flex: 1 1 100%;
+  }
+}
+
+.feed-form :focus-visible,
+.feed-grid + button:focus-visible {
+  outline: 2px dashed #2f4f2f;
+  outline-offset: 2px;
+}
+
+.feed-item {
+  margin: 0;
+}
+
+.feed-item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid #2f4f2f;
+  image-rendering: auto;
+}
+
+.feed-item figcaption > * {
+  display: block;
+  font-family: 'unifont', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-item figcaption small {
+  opacity: 0.75;
+}
+
 /* https://maxbittker.github.io/broider/ */
 .bottom-wave {
   border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAAXNSR0IArs4c6QAAAI9JREFUWEft0sEJgDAQRNGkIquxCuuxCquxIsWDFyGQbD7Cws9ZxsnL1JLk1CQ9i0Xpl1JUUVqAznOjitICdJ4bVZQWoPPcqKK0AJ3nRhWlBeg8N6ooLUDnuVFFaQE6z40qSgvQeeGNrttyPWWO/QxnjFwm/JM0RV+N3sK937WUw6Lpin4Lt0Rmtzwt+lfRG+vIICtVdm8fAAAAAElFTkSuQmCC") 14 / 14px / 0 round;

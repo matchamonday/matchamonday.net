@@ -64,6 +64,119 @@
       </section>
 
       <section class="bottom-wave">
+        <h2 id="feed">Matcha feed</h2>
+        <p>Share your matcha from any chapter. To avoid doxxing, please keep people's faces out of your photos.</p>
+        <form id="feed-form" class="feed-form">
+          <input type="text" name="name" placeholder="Your name" maxlength="40" required>
+          <select name="chapter" required>
+            <option value="" disabled selected>Your chapter</option>
+            <option value="syd">Sydney</option>
+            <option value="nyc">New York</option>
+            <option value="sf">San Francisco</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="file" name="photo" accept="image/*" required>
+          <button type="submit">Post</button>
+        </form>
+        <p id="feed-message" role="status"></p>
+        <div class="feed-grid" id="feed-grid"></div>
+        <button type="button" id="feed-more" hidden>Load more</button>
+      </section>
+
+      <script type="module">
+        const FEED_API = 'https://api.matchamonday.net';
+
+        const form = document.getElementById('feed-form');
+        const message = document.getElementById('feed-message');
+        const grid = document.getElementById('feed-grid');
+        const more = document.getElementById('feed-more');
+        let next;
+        let rows = 2;
+
+        function renderPost(post) {
+          const figure = document.createElement('figure');
+          figure.className = 'feed-item';
+          const img = document.createElement('img');
+          img.src = post.photo_url;
+          img.alt = `Matcha from ${post.name}`;
+          img.loading = 'lazy';
+          const caption = document.createElement('figcaption');
+          const name = document.createElement('span');
+          name.textContent = post.name;
+          const details = document.createElement('small');
+          const date = new Date(post.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+          const chapter = post.chapter === 'other' ? 'elsewhere' : `/${post.chapter}`;
+          details.textContent = `${chapter} · ${date}`;
+          caption.append(name, details);
+          figure.append(img, caption);
+          return figure;
+        }
+
+        function showRows() {
+          const visible = rows * getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+          [...grid.children].forEach((item, i) => (item.hidden = i >= visible));
+          more.hidden = grid.children.length <= visible && next === null;
+          return visible;
+        }
+
+        async function loadPosts() {
+          try {
+            while (grid.children.length < showRows() && next !== null) {
+              const response = await fetch(`${FEED_API}/posts${next ? `?before=${next}` : ''}`);
+              const page = await response.json();
+              grid.append(...page.posts.map(renderPost));
+              next = page.next;
+            }
+            if (!grid.children.length) message.textContent = 'No photos yet.';
+          } catch {
+            message.textContent = 'Failed to load the feed.';
+          }
+          showRows();
+        }
+
+        async function toJpeg(file) {
+          const bitmap = await createImageBitmap(file);
+          const scale = Math.min(1, 1280 / Math.max(bitmap.width, bitmap.height));
+          const width = Math.round(bitmap.width * scale);
+          const height = Math.round(bitmap.height * scale);
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          canvas.getContext('2d').drawImage(bitmap, 0, 0, width, height);
+          return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.85));
+        }
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const button = form.querySelector('button');
+          button.disabled = true;
+          message.textContent = 'Checking your matcha…';
+          try {
+            const body = new FormData(form);
+            body.set('photo', await toJpeg(body.get('photo')), 'matcha.jpg');
+            const response = await fetch(`${FEED_API}/posts`, { method: 'POST', body });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error);
+            grid.prepend(renderPost(result.post));
+            showRows();
+            form.reset();
+            message.textContent = '';
+          } catch (error) {
+            message.textContent = error.message;
+          } finally {
+            button.disabled = false;
+          }
+        });
+
+        more.addEventListener('click', () => {
+          rows += 2;
+          loadPosts();
+        });
+        addEventListener('resize', showRows);
+        loadPosts();
+      </script>
+
+      <section class="bottom-wave">
         <h2 id="member-achievements">Member achievements</h2>
         <div class="achievements-grid" id="achievements-grid">
           <div class="achievement-item">

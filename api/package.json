@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler d1 migrations apply matchamonday-feed --remote && wrangler deploy"
+    "deploy": "wrangler d1 migrations apply matchamonday-feed --remote && wrangler deploy",
+    "preview": "wrangler d1 migrations apply DB --remote --preview && wrangler preview"
   },
   "devDependencies": {
     "wrangler": "^4.165.0"

@@ -84,8 +84,11 @@
       </section>
 
       <script type="module">
-        const FEED_API = location.hostname.endsWith('.pages.dev')
-          ? 'https://api-preview.matchamonday.net'
+        // Pages serves a branch preview at <branch>.matchamonday-net.pages.dev and Workers Builds names the
+        // API Preview after the same branch slug (lowercased, every run of other characters turned into `-`).
+        const previewBranch = location.hostname.match(/^([a-z0-9-]+)\.matchamonday-net\.pages\.dev$/)?.[1];
+        const FEED_API = previewBranch
+          ? `https://${previewBranch}-matchamonday-feed.samis.workers.dev`
           : 'https://api.matchamonday.net';
 
         const form = document.getElementById('feed-form');

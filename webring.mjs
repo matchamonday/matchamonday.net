@@ -32,6 +32,11 @@ const RING = [
     name: "Clare Birch",
     feed: "https://clarebir.ch/feed.xml",
   },
+  {
+    url: "https://josephfattah.com",
+    name: "Joseph Liu Fattah",
+    feed: "https://josephfattah.com/feed.xml",
+  },
 ];
 
 /**
